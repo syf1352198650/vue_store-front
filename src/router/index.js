@@ -159,16 +159,16 @@ const router = new VueRouter({
 
 router.beforeEach((to,from,next)=>{
     
-    let nextRoute = ['Payment','Cart','Path','Order','pathIndex','path-list'];
-    //是否是登录中
-    let userInfo = JSON.parse( localStorage.getItem('teaUserInfo')  );
+    // let nextRoute = ['Payment','Cart','Path','Order','pathIndex','path-list'];
+    // //是否是登录中
+    // let userInfo = JSON.parse( localStorage.getItem('teaUserInfo')  );
     
-    //当前进入的页面，是不是需要验证哪些页面
-    if(  nextRoute.indexOf( to.name ) >= 0  ){
-        if( !userInfo ){
-            router.push('/login');
-        }
-    }
+    // //当前进入的页面，是不是需要验证哪些页面
+    // if(  nextRoute.indexOf( to.name ) >= 0  ){
+    //     if( !userInfo ){
+    //         router.push('/login');
+    //     }
+    // }
     
     next();
 })
