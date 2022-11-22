@@ -26,6 +26,8 @@
 </template>
 
 <script>
+import {getShortMessage,addUser} from "@/api/index"
+import {Toast} from "mint-ui"
 import Header from "./Header.vue";
 import Tabbar from "../../components/common/Tabbar.vue";
 import { mapMutations } from "vuex";
@@ -49,15 +51,59 @@ export default {
     };
   },
   methods: {
-    ...mapMutations(["USER_LOGIN"]),
+    ...mapMutations(["userLogin"]),
     //点击获取验证码按钮
     sendCode() {
       //验证电话号码
-      if (!this.validate("userTel")) return;
+      if (!this.validate("userTel")) return ;
+        //请求短信接口
+        getShortMessage(this.userTel).then((res)=>{
+          // console.log(res);
+          if(res.data.success){
+            this.code=res.data.data
+          }
+        })
+      //禁用按钮
+        this.disabled=true;
+        //倒计时
+        let timer=setInterval(()=>{
+            --this.codeNum;
+            this.codeMsg=`重新发送${this.codeNum}`
+        },1000)
+        //倒计时完后停止定时器
+        setTimeout(()=>{
+          clearInterval(timer);
+          this.codeNum=6;
+          this.codeMsg='获取短信验证码';
+          this.disabled=false;
+
+        },6000)
+
     },
     login() {
       console.log("login");
+      //判断验证码是否正确
+      if(this.code==this.userCode){
+            addUser(this.userTel).then((res)=>{
+              //将用户信息存储起来
+              this.userLogin(res.data.data)
+              // 跳转到我的页面
+              this.$router.push('/my')
+              console.log(res);
+            })
+      }
     },
+    //验证信息提示
+		validate( key ){
+			let bool = true;
+			if( !this.rules[key].rule.test( this[key])  ){
+				//提示信息
+				Toast(this.rules[key].msg);
+				bool = false;
+				return false;
+			}
+			return bool;
+		},
     //密码登录
     goUserLogin() {
       this.$router.push("/userLogin");

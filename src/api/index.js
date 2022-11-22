@@ -20,8 +20,29 @@ export function getGoodDetail(id){
 }
 export function getShortMessage(tel){
     return service({
-        url:'getShortMessage',
-        method:'get',
-        params:{tel:tel}
+        url:'user/getShortMessage',
+        method:'post',
+        data:{tel:tel}
+    })
+}
+export function addUser(tel){
+    return service({
+        url:'user/addUser',
+        method:'post',
+        data:{tel:tel}
+    })
+}
+export function userLogin(params){
+    return service({
+        url:'user/login',
+        method:'post',
+        data:params
+    })
+}
+export function registerUser(params){
+    return service({
+        url:"user/registerUser",
+        method:'post',
+        data:params
     })
 }
