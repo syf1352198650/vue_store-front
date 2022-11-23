@@ -97,6 +97,8 @@ const routes = [
   {
     path: "/recovery",
     name: "Recovery",
+    component: () =>
+    import("../views/recovery/Recovery.vue"),
   	children:[
   		{
   			path: "/",
@@ -111,8 +113,7 @@ const routes = [
   			  import("../views/recovery/RecoveryBtn.vue"),
   		}
   	],
-    component: () =>
-      import("../views/Search.vue"),
+   
     },
     {
       path: "/path",

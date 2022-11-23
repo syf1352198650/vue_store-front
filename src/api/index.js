@@ -46,3 +46,19 @@ export function registerUser(params){
         data:params
     })
 }
+//查询用户手机是否注册
+export function queryTel(params){
+return service({
+    url:'user/queryTel',
+    method:'post',
+    data:params
+})
+}
+//修改密码
+export function updatePwd(params){
+    return service({
+        url:'user/updatePwd',
+        method:'post',
+        data:params
+    })
+}
