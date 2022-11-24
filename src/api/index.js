@@ -62,3 +62,12 @@ export function updatePwd(params){
         data:params
     })
 }
+
+//查询商品
+export function getShopList(params){
+    return service({
+        url:'getShopList',
+        method:'get',
+        params:params
+    })
+}
