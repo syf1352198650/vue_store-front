@@ -76,7 +76,7 @@ export function getAddress(){
     return service({
         url:'getAddress',
         method:'get',
-        headers:{token:true}
+        headers:{needToken:true}
     })
 }
 //添加地址
@@ -84,7 +84,8 @@ export function addAddress(params){
    return service({
     url:'addAddress',
     method:'post',
-    data:params
+    data:params,
+    headers:{needToken:true}
    })
 }
 //修改地址
@@ -92,6 +93,16 @@ export function updateAddress(params){
     return service({
         url:'updateAddress',
         method:'post',
-        data:params
+        data:params,
+        headers:{needToken:true}
+    })
+}
+//删除地址
+export function deleteAddress(params){
+    return service({
+        url:'deleteAddress',
+        method:'post',
+        data:params,
+        headers:{needToken:true}
     })
 }

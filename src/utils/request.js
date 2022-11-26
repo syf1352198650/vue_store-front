@@ -6,6 +6,12 @@ const service=axios.create({
 })
 service.interceptors.request.use((req)=>{
     console.log('请求拦截');
+    let token=JSON.parse(localStorage.getItem('teaUserInfo')).token
+    // console.log(token);
+    // console.log(req.headers.needToken);
+    if(req.headers.needToken=true){
+        req.headers.token=token;
+    }
     return req
 })
 service.interceptors.response.use((res)=>{

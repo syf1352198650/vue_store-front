@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import {addAddress,updateAddress} from "@/api"
+import {addAddress,updateAddress,deleteAddress} from "@/api"
 import { Toast } from 'vant';
 import { areaList } from '@vant/area-data';
 import Header from '@/components/path/Header.vue'
@@ -68,8 +68,10 @@ export default {
                     })
                 },
                 //删除
-                onDelete(){
-
+                onDelete(content){
+deleteAddress(content).then((res)=>{
+    console.log(res);
+})
                 }
 
     },
