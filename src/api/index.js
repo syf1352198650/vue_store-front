@@ -71,3 +71,27 @@ export function getShopList(params){
         params:params
     })
 }
+//查询地址
+export function getAddress(){
+    return service({
+        url:'getAddress',
+        method:'get',
+        headers:{token:true}
+    })
+}
+//添加地址
+export function addAddress(params){
+   return service({
+    url:'addAddress',
+    method:'post',
+    data:params
+   })
+}
+//修改地址
+export function updateAddress(params){
+    return service({
+        url:'updateAddress',
+        method:'post',
+        data:params
+    })
+}

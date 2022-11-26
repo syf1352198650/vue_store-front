@@ -4,7 +4,7 @@
 			<img src="@/assets/images/logo.png" alt="">
 		</h1>
 		<div class='search' @click='goSearch'>
-			<i class='iconfont icon-fangdajing'></i>
+			<i class='iconfont icon-fangdajing' @click="goBack"></i>
 			<span>搜您喜欢的...</span>
 		</div>
 		<div class='kefu'>
@@ -16,6 +16,9 @@
 <script>
 export default{
 	methods:{
+		goBack(){
+			this.$router.push("/home")
+		},
 		goSearch(){
 			this.$router.push('/search')
 		}

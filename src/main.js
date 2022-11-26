@@ -4,7 +4,8 @@ import router from './router'
 import store from './store'
 import Mint from 'mint-ui';
 import 'mint-ui/lib/style.css';
- 
+import Vant from 'vant';
+import 'vant/lib/index.css';
 
 //字体图标css文件
 import '@/assets/css/iconfont.css'
@@ -16,6 +17,9 @@ import '@/assets/js/flexible'
 import LyTab from 'ly-tab'
 Vue.use(LyTab);
 Vue.use(Mint);
+
+
+Vue.use(Vant);
 Vue.config.productionTip = false
 
 new Vue({

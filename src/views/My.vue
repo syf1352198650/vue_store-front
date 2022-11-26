@@ -3,7 +3,7 @@
   <header>
     <div class="user-info" v-if="loginStatus">
       <img :src="userInfo.imgUrl" alt="">
-      <span>{{user.nickName}}</span>
+      <span>{{userInfo.nickName}}</span>
     </div>
     <div v-else class="login" @click="goLogin">
       登录/注册
@@ -34,7 +34,7 @@ computed:{
 })
 },
 methods:{
-  ...mapMutations['loginOut'],
+  ...mapMutations(['loginOut']),
   goLogin(){
     this.$router.push('/login')
   },

@@ -1,7 +1,7 @@
 <template>
  <div class="list">
   <header v-show="isShow">
-    <div class="returns">
+    <div class="returns" @click="goBack">
       <i class="iconfont icon-fanhui"></i>
     </div>
     <div class="search">
@@ -73,6 +73,9 @@ export default {
         }
   },
   methods:{
+    goBack(){
+      this.$router.back()
+    },
     goScroll(index){
       this.rightBScroll.scrollTo(0,-this.allHeight[index],300)
     },

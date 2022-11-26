@@ -118,12 +118,14 @@ const routes = [
     {
       path: "/path",
       name: "Path",
+      component: () =>
+        import('@/views/Path'),
       children:[
       	{
       		path: "/",
       		name: "pathIndex",
       		component: () =>
-      		  import("../views/path/Path-Index.vue"),
+      		  import("@/views/path/Path-Index"),
       	},
         {
         	path: "path-list",
@@ -132,8 +134,7 @@ const routes = [
         	  import("../views/path/Path-List.vue"),
         },
       ],
-      component: () =>
-        import("../views/Path.vue"),
+      
     },
     {
       path: "/order",
