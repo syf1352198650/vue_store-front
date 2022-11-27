@@ -69,6 +69,7 @@
 </template>
 
 <script>
+import {addCart} from '@/api'
 import {getGoodDetail} from "@/api/index"
 import 'swiper/dist/css/swiper.css'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
@@ -119,7 +120,10 @@ export default {
                 this.$router.back()
             },
             addCart(){
-
+  let id=this.$route.query.id;
+  addCart({id:id}).then((res)=>{
+	console.log(res);
+  })
             }
            },
            mounted(){

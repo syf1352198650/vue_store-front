@@ -106,3 +106,21 @@ export function deleteAddress(params){
         headers:{needToken:true}
     })
 }
+//添加购物车
+export function addCart(params){
+    return service({
+        url:'addCart',
+        method:'post',
+        data:params,
+        headers:{needToken:true}
+    })
+}
+//查询购物车
+export function queryCart(params){
+    return service({
+        url:'queryCart',
+        method:'post',
+        data:params,
+        headers:{needToken:true}
+    })
+}
