@@ -116,9 +116,25 @@ export function addCart(params){
     })
 }
 //查询购物车
-export function queryCart(params){
+export function queryCart(){
     return service({
         url:'queryCart',
+        method:'get',
+        headers:{needToken:true}
+    })
+}
+//修改购物车商品数量
+export function updateNum(params){
+    return service({
+        url:'updateNum',
+        method:'post',
+        data:params,
+        headers:{needToken:true}
+    })
+}
+export function deleteCart(params){
+    return service({
+        url:'deleteCart',
         method:'post',
         data:params,
         headers:{needToken:true}
