@@ -132,11 +132,30 @@ export function updateNum(params){
         headers:{needToken:true}
     })
 }
+//删除购物车
 export function deleteCart(params){
     return service({
         url:'deleteCart',
         method:'post',
         data:params,
+        headers:{needToken:true}
+    })
+}
+//添加订单
+export function addOrder(params){
+    return service({
+        url:'addOrder',
+        method:'post',
+        data:params,
+        headers:{needToken:true}
+    })
+}
+//查询订单
+export function selectOrder(params){
+    return service({
+        url:'selectOrder',
+        method:'get',
+        params:params,
         headers:{needToken:true}
     })
 }

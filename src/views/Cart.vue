@@ -54,8 +54,9 @@
 
 <script>
 import {updateNum} from "@/api"
-import {queryCart} from '@/api';
+import {queryCart,addOrder} from '@/api';
 import {mapMutations,mapState,mapGetters,mapActions} from "vuex"
+import { Toast } from 'vant';
 export default {
  name: "Cart",
     data () {
@@ -68,12 +69,17 @@ export default {
       this.queryCartFn()
     },
     computed:{
-        
+       
       ...mapState({
         list:state=>state.cart.list,
         selectList:state=>state.cart.selectList
       }),
-      ...mapGetters(['isCheckedAll','total'])
+      ...mapGetters(['isCheckedAll','total']),
+       goodsList(){
+           return this.selectList.map((id)=>{
+              return this.list.find((v)=>v.cId==id)
+            })
+        },
     },
     methods:{
      ...mapMutations(['cartList','checkItem','initOrder']),
@@ -99,7 +105,32 @@ export default {
       },
       //去结算
       goOrder(){
-
+        //选择商品列表不为空
+        if(!this.selectList.length){
+          Toast('请至少选择一件商品');
+          return ;
+        }
+        let newList=[];
+        this.list.forEach((item)=>{
+          this.selectList.forEach((v)=>{
+            if(v==item.cId){
+              newList.push(item)
+            }
+          })
+        })
+        console.log('newlist',newList);
+        addOrder(newList).then((res)=>{
+          this.initOrder(res.data);
+     
+          console.log(res);
+          this.$router.push({
+            path:'/order',
+            query:{
+              // goodsList:JSON.stringify(that.goodsList)
+              goodsList:JSON.stringify(this.goodsList)
+            }
+          })
+        })
       }
     }
 }
