@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const service=axios.create({
-    baseURL:'http://127.0.0.1:3007',
+    baseURL:'http://192.168.10.119:3007',
     // withCredentials: true, // 允许携带coolie,报错
 })
 service.interceptors.request.use((req)=>{

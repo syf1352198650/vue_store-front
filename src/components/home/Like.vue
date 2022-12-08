@@ -8,7 +8,7 @@
 				@click='goDetail(item.id)'
         >
         <h2>
-            <img :src="item.imgUrl" alt="">
+            <img v-lazy="item.imgUrl" alt="">
         </h2>
         <h3>{{item.name}}</h3>
         <div>
@@ -83,5 +83,8 @@ components:{
 .like img{
 	width: 4.693333rem;
 	height: 4.693333rem;
+}
+.like img[lazy=loading] {
+  background-color: #f7f7f7;
 }
 </style>

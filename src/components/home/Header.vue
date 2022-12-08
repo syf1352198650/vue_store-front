@@ -1,8 +1,8 @@
 <template>
 	<header>
-		<h1>
+		<!-- <h1>
 			<img src="@/assets/images/logo.png" alt="">
-		</h1>
+		</h1> -->
 		<div class='search' @click='goSearch'>
 			<i class='iconfont icon-fangdajing' @click="goBack"></i>
 			<span>搜您喜欢的...</span>
@@ -47,8 +47,8 @@ header h1 img{
 .search{
 	display: flex;
 	align-items: center;
-	width: 5rem;
-	height: 0.8rem;
+	width: 8.5rem;
+	height: 1rem;
 	background-color: #FFFFFF;
 	border-radius: 12px;
 }

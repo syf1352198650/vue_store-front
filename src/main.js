@@ -15,6 +15,9 @@ import "@/assets/css/common.css";
 import '@/assets/js/flexible'
 //ly-tab插件
 import LyTab from 'ly-tab'
+//fastclick插件，防止双击放大
+import fastClick from 'fastclick'
+fastClick.attach(document.body);
 Vue.use(LyTab);
 Vue.use(Mint);
 
